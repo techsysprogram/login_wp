@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# IDE
+# ignorer .env
 .env
 
-# OS
-/mon-code/includes/*
+# ignorer api-key.php
+/mon-code/includes/api-key.php
