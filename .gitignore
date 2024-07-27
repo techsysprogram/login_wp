@@ -27,4 +27,4 @@ dist-ssr
 .env
 
 # Ignorer le fichier de clé API
-/includes/api-key.php
+includes/api-key.php
