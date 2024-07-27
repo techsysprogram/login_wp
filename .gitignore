@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# .gitignore
+.env
+
+# Ignorer le fichier de clé API
+/includes/api-key.php

@@ -1,13 +1,13 @@
-import './App.css'
-import { InputWithButton } from './myComponents/login'
+// App.jsx
+import './App.css';
+import InputWithButton from './myComponents/login';
 
 function App() {
-
   return (
     <>
       <InputWithButton />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,25 +1,57 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import axios from 'axios';
+import { useState } from 'react';
 
-export function InputWithButton() {
+export default function InputWithButton() {
+  const [message, setMessage] = useState('');
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    const fields = new FormData(e.target)
-    const fieldEmail = fields.get('email')
-    const fieldPassword = fields.get('password')
-    console.log(fieldEmail)
-    console.log(fieldPassword)
+  async function RecupererID_Autheur_Email(UserName_Email, token) {
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `/api/wp-json/v1/userid?username=${encodeURIComponent(UserName_Email)}`,
+      headers: { 
+        'Authorization': `Bearer ${token}`
+      } 
+    };
+
+    try {
+      const response = await axios.request(config);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fields = new FormData(e.target);
+    const username_email = fields.get('name');
+    const token = import.meta.env.VITE_API_TOKEN;
+
+    if (!token) {
+      console.error('API token is not defined');
+      setMessage('API token is not defined');
+      return;
+    }
+
+    try {
+      const users = await RecupererID_Autheur_Email(username_email, token);
+      setMessage(JSON.stringify(users, null, 2)); // Format JSON bien structuré
+      console.log('Retrieved users:', users);
+    } catch (error) {
+      setMessage('Error retrieving data');
+      console.error('Error:', error);
+    }
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-        <form className="form flex flex-col items-center w-full max-w-sm space-y-2" onSubmit={handleSubmit}>
-          <label className="text-lg font-semibold">Se connecter</label>
-          <Input name='email' type="email" placeholder="Email" className="w-full" />
-          <Input name='password' type="password" placeholder="Password" className="w-full" />
-          <Button type="submit" className="w-full">Subscribe</Button>
-        </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Username or Email" />
+        <button type="submit">Submit</button>
+      </form>
+      {message && <pre>{message}</pre>}
     </div>
-  )
+  );
 }
