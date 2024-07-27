@@ -1,4 +1,5 @@
 ### creation connection au serveur corrige
+..* loco
 ..* ici je rajouter un login + avec 2 champs user et password
 + ligne 2
 - ligne 3
