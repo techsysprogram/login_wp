@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# .gitignore Ignorer le fichier de clé API
+includes/api-key.php
+
 # .gitignore
 .env
-
-# Ignorer le fichier de clé API
-includes/api-key.php
