@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # .gitignore Ignorer le fichier de clé API
-includes/api-key.php
+mon-code/includes/api-key.php
 
 # .gitignore
 .env
