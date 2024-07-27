@@ -27,4 +27,4 @@ dist-ssr
 .env
 
 # OS
-/mon-code/includes/api-key.php
+/mon-code/includes/*

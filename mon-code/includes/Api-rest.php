@@ -4,7 +4,6 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-
 // Inclure le fichier de clé API
 include_once 'api-key.php';
 
