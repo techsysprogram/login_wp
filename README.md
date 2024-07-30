@@ -1,5 +1,5 @@
 ### creation connection au serveur corrige
-..* loco esto no quiero que aparezca
++ loco esto no quiero que aparezca
 ..* ici je rajouter un login + avec 2 champs user et password
 + ligne 2
 - ligne 3
